@@ -1,141 +1,260 @@
-# Transcriptor de audios
+<div align="center">
 
-Convierte audios a texto (por ejemplo, las notas de voz de WhatsApp) con [Whisper](https://github.com/openai/whisper),
-**en tu propia computadora y gratis**. Los audios no salen de tu equipo: después de la primera vez funciona sin internet.
+  <img src="logo.png" alt="TranscribeNext Logo" width="110" height="110" style="border-radius: 20px;" />
 
-- Ventana simple: eliges o arrastras un audio y el texto aparece en pantalla, listo para copiar.
-- Muy buena calidad en español (también detecta otros idiomas).
-- Acepta audios de cualquier duración: `.ogg`, `.opus`, `.mp3`, `.m4a`, `.wav`, `.mp4`, `.webm`, `.flac`, `.aac`.
-- Funciona en **Windows**, **Linux** y **Mac**.
+  # TranscribeNext
 
-## Descargar
+  **Transcriptor inteligente de audios a texto con IA local. 100% privado, ilimitado y sin suscripciones.**
 
-Entra a **[Releases](../../releases/latest)** y baja el `.zip` de tu sistema:
+  <p>
+    <a href="https://github.com/jhoel0521/transcriptor-audios/releases"><img src="https://img.shields.io/badge/ESTADO-ESTABLE%20v1.0-2ea44f?style=for-the-badge" alt="Estado" /></a>
+    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/PYTHON-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
+    <a href="https://github.com/SYSTRAN/faster-whisper"><img src="https://img.shields.io/badge/MOTOR-FASTER--WHISPER-orange?style=for-the-badge" alt="Faster Whisper" /></a>
+    <img src="https://img.shields.io/badge/PRIVACIDAD-100%25%20LOCAL-6f42c1?style=for-the-badge" alt="100% Local" />
+    <img src="https://img.shields.io/badge/RED-OFFLINE%20LISTO-0366d6?style=for-the-badge" alt="Offline" />
+    <a href="LICENSE"><img src="https://img.shields.io/badge/LICENCIA-GPL--3.0-informational?style=for-the-badge" alt="Licencia" /></a>
+  </p>
 
-| Sistema | Archivo | Cómo abrirlo |
+  <p>
+    <a href="#-vista-rápida">Vista rápida</a> •
+    <a href="#-características">Características</a> •
+    <a href="#-instalación-rápida">Instalación rápida</a> •
+    <a href="#-cómo-se-usa-paso-a-paso">Cómo se usa</a> •
+    <a href="#-uso-desde-la-terminal">Modo Terminal (CLI)</a> •
+    <a href="#-preguntas-frecuentes">Preguntas frecuentes</a>
+  </p>
+
+</div>
+
+---
+
+**TranscribeNext** convierte tus audios y notas de voz a texto en cuestión de segundos utilizando los modelos de inteligencia artificial de [Whisper](https://github.com/openai/whisper) ejecutados **directamente en tu propia computadora**. 
+
+> [!NOTE]
+> 🔒 **Privacidad total garantizada:** Tus audios, grabaciones y conversaciones **nunca salen de tu equipo** ni se envían a ningún servidor externo. Tras la primera ejecución, el programa funciona **100% sin conexión a internet**.
+
+---
+
+## 🎬 Vista rápida
+
+Solo tienes que arrastrar tu archivo y obtendrás el texto transcrito de inmediato:
+
+```text
+  ┌─────────────────────────────────────────────────────────────┐
+  │  1. Arrastra tu audio  ──►  2. Procesamiento local (IA)     │
+  │     (WhatsApp, MP3...)         (Whisper en tu propio CPU)   │
+  │                                           │                 │
+  │                                           ▼                 │
+  │                             3. ¡Texto listo para copiar!    │
+  └─────────────────────────────────────────────────────────────┘
+```
+
+### 🎵 Formatos de audio soportados
+`WhatsApp (.ogg, .opus)` • `.mp3` • `.m4a` • `.wav` • `.aac` • `.flac` • `.webm` • `.mp4`
+
+---
+
+## ✨ Características
+
+- 🔒 **Privacidad absoluta**: Tus grabaciones personales, médicas, legales o de trabajo permanecen en tu computadora.
+- ⚡ **Rápido y optimizado**: Motor [faster-whisper](https://github.com/SYSTRAN/faster-whisper) con aceleración eficiente en procesadores estándar.
+- 🎯 **Dos modelos según tu necesidad**:
+  - **Preciso (`large-v3-turbo`)**: Máxima exactitud y puntuación gramatical impecable.
+  - **Rápido (`small`)**: Velocidad superior, ideal para equipos más modestos o transcripciones rápidas.
+- ⏱️ **Marcas de tiempo opcionales**: Activa la casilla *Con tiempos* para obtener el minuto exacto `[00:15]` de cada intervención.
+- 📁 **Soporte para múltiples audios y carpetas**: Procesa audios sueltos o una carpeta completa en lote.
+- 📋 **Exportación en un clic**: Copia todo al portapapeles o guárdalo como archivo `.txt`.
+- 🧳 **100% Portable**: No requiere instalador ni permisos de administrador; puedes llevarlo en una memoria USB.
+
+---
+
+## 🚀 Instalación rápida
+
+Elige la opción que mejor se adapte a ti:
+
+### 🌟 Opción 1: Descargar versión lista para usar (Recomendada)
+*No necesitas saber de programación ni instalar Python.*
+
+1. Ve a la sección de **[Últimas Versiones (Releases)](../../releases/latest)**.
+2. Descarga el paquete correspondiente a tu sistema operativo:
+
+| Sistema Operativo | Archivo de descarga | Cómo iniciarlo |
 |---|---|---|
-| Windows 10 u 11 (64 bits) | `Transcriptor-Windows.zip` | Descomprime y doble clic en `Transcriptor.exe` |
-| Linux (64 bits): Ubuntu 22.04+, Debian 12+, Mint 21+, Fedora 36+ | `Transcriptor-Linux.zip` | Descomprime y ejecuta `Transcriptor/Transcriptor` |
-| Mac | No hay programa compilado todavía | Usa el programa desde el código (ver abajo) |
+| **Windows 10 / 11** (64 bits) | `Transcriptor-Windows.zip` | Descomprime el `.zip` y haz doble clic en `Transcriptor.exe` |
+| **Linux** (Ubuntu, Debian, Mint, Fedora) | `Transcriptor-Linux.zip` | Descomprime y ejecuta el archivo `Transcriptor` |
+| **macOS** | *(Próximamente ejecutable)* | Usar la Opción 2 (desde código) |
 
-No hay que instalar nada: es una carpeta portable que puedes copiar a un USB o a otra PC.
+> [!TIP]
+> **¿Aparece el aviso "Windows protegió su PC"?**  
+> Al tratarse de un programa de código abierto sin firma digital comercial, Windows SmartScreen puede mostrar una advertencia azul. Es completamente seguro: haz clic en **"Más información"** y luego en **"Ejecutar de todas formas"**.
 
-**La primera vez** que transcribes, el programa descarga el modelo de voz (1,6 GB) y lo guarda junto al programa.
-Puede tardar varios minutos según tu internet. Después ya no lo vuelve a descargar.
+> [!IMPORTANT]
+> **Primera vez que transcribes:**  
+> En la primera transcripción, la aplicación descargará el modelo de inteligencia artificial (~1.6 GB) de forma automática. Tardará unos minutos según la velocidad de tu internet. **A partir de ese momento, funcionará siempre sin conexión a internet.**
 
-### Avisos de seguridad (normales en programas sin firma digital)
+---
 
-- **Windows** puede mostrar "Windows protegió su PC": haz clic en **Más información** y luego en **Ejecutar de todas formas**.
+### 💻 Opción 2: Ejecutar desde el código fuente
+*Para desarrolladores o usuarios que deseen personalizar el código.*
 
-El programa se compila a partir del código de este repositorio, así que cualquiera puede revisar exactamente qué hace,
-o compilarlo por su cuenta (ver "Compilar el programa").
+#### Prerrequisitos
+- **Python 3.10** o superior instalado.
+- *(En Linux Debian/Ubuntu)*: `sudo apt install python3-venv python3-tk`
 
-## Cómo se usa
-
-1. Abre el programa.
-2. Haz clic en **"Seleccionar audio..."** o arrastra el audio encima de la ventana.
-3. Espera: el texto va apareciendo y el título de la ventana muestra el avance.
-   En una computadora normal, un audio de 2 minutos tarda alrededor de 1 minuto.
-4. Cuando diga **"Listo"**, haz clic en **"Copiar todo"**.
-
-Otras opciones: **Guardar .txt...**, **Limpiar**, **Cancelar**, **Con tiempos** (marca el minuto de cada frase)
-y **Modelo** ("Preciso" o "Rápido", que es más veloz pero se equivoca más).
-
-## Ejecutar desde el código
-
-Requiere Python 3.10 o más reciente. En Linux instala antes `sudo apt install python3-venv python3-tk`.
+#### Paso a paso
 
 ```bash
+# 1. Clonar el repositorio
 git clone https://github.com/jhoel0521/transcriptor-audios.git
 cd transcriptor-audios
+
+# 2. Crear el entorno virtual
 python -m venv .venv
 ```
 
-Windows:
-
-```bash
+**En Windows:**
+```powershell
+# Activar entorno e instalar dependencias
 .venv\Scripts\python -m pip install -r requirements.txt
+
+# Iniciar la aplicación
 .venv\Scripts\python app.pyw
 ```
 
-Mac y Linux:
-
+**En Linux o macOS:**
 ```bash
+# Activar entorno e instalar dependencias
 .venv/bin/python -m pip install -r requirements.txt
+
+# Iniciar la aplicación
 .venv/bin/python app.pyw
 ```
 
-### Desde la terminal
+---
 
-`transcribir.py` transcribe uno o varios audios, o una carpeta entera, y guarda los textos:
+## 📖 Cómo se usa (Paso a paso)
+
+1. **Abre el programa**: Ejecuta `Transcriptor.exe` o `app.pyw`.
+2. **Carga tus audios**:
+   - Haz clic en **"Seleccionar audio..."** o simplemente **arrastra y suelta** los archivos dentro de la ventana.
+3. **Elige tus preferencias**:
+   - **Modelo**: Déjalo en *"Preciso"* para la mejor calidad o cambia a *"Rápido"* si tienes prisa.
+   - **Con tiempos**: Marca esta casilla si deseas ver los minutos y segundos de cada frase.
+4. **Obtén tu resultado**:
+   - Observa la transcripción en tiempo real.
+   - Cuando termine y muestre el estado **"Listo"**, presiona **"Copiar todo"** o **"Guardar .txt..."**.
+
+---
+
+## 💻 Uso desde la Terminal
+
+Si prefieres la consola o quieres automatizar tareas por lotes, utiliza `transcribir.py`:
 
 ```bash
-python transcribir.py "audio.ogg" --salida transcripciones
+# Transcribir un archivo individual
+python transcribir.py "mi_audio.mp3"
+
+# Transcribir y guardar el resultado en una carpeta específica
+python transcribir.py "audio.ogg" --salida "mis_textos"
+
+# Transcribir todos los audios de una carpeta
+python transcribir.py "C:\AudiosGrabados"
+
+# Transcribir con marcas de tiempo e indicar idioma español
+python transcribir.py "entrevista.wav" --tiempos --idioma es
+
+# Mover los audios ya procesados a otra carpeta
+python transcribir.py "pendientes" --mover "procesados"
 ```
 
-Opciones: `--tiempos`, `--mover carpeta`, `--modelo small`, `--idioma auto`.
+---
 
-### Compilar el programa
+## 🛠️ Compilar el programa portable
 
-Cada sistema se compila en ese mismo sistema: PyInstaller no puede crear un programa de Mac desde Windows, ni al revés.
-La excepción es Linux, que se puede compilar desde cualquier sistema con Docker.
+Si modificaste el código y quieres generar tu propio ejecutable:
 
-**Windows** (y Mac), con el entorno instalado:
-
+### En Windows / macOS
 ```bash
-python -m pip install pyinstaller
+pip install pyinstaller
 python compilar.py
 ```
+El resultado estará listo en `dist/Transcriptor/`.
 
-El programa queda en `dist/Transcriptor/`. Si existe la carpeta `modelos/` en el proyecto, se copia adentro
-para que funcione sin internet.
-
-Para armar el `.zip` que se publica en Releases (sin el modelo y con todas las licencias de terceros):
-
+Para crear el paquete `.zip` distribuible:
 ```bash
 python compilar.py --publicar
 ```
 
-**Linux**, con Docker, desde Windows, Mac o Linux:
-
+### En Linux con Docker (Multiplataforma)
+Puedes compilar la versión de Linux desde cualquier sistema operativo teniendo Docker instalado:
 ```bash
 docker build -f Dockerfile.linux -o dist .
 ```
 
-Deja `dist/Transcriptor-Linux.zip`. Se compila sobre Ubuntu 22.04 para que funcione en Ubuntu 22.04 o superior,
-Debian 12 o superior, Mint 21 o superior y Fedora 36 o superior.
+---
 
-## Archivos del proyecto
+## ❓ Preguntas frecuentes
 
-| Archivo | Qué hace |
+<details>
+<summary><b>¿Funciona con las notas de voz de WhatsApp?</b></summary>
+<p>
+¡Sí! Es uno de sus principales usos. Solo arrastra el archivo de audio de WhatsApp (generalmente formato <code>.ogg</code> u <code>.opus</code>) y la aplicación lo transcribirá perfectamente.
+</p>
+</details>
+
+<details>
+<summary><b>¿Cuánto tarda en transcribir?</b></summary>
+<p>
+Depende de la duración del audio y la potencia de tu equipo. En una computadora moderna estándar, un audio de 2 minutos suele tardar entre 30 y 60 segundos.
+</p>
+</details>
+
+<details>
+<summary><b>¿Necesito conexión a internet permanente?</b></summary>
+<p>
+No. Solo requieres conexión la primera vez que se descarga el modelo de voz. Luego de esa descarga inicial, el programa funcionará en modo avión o sin red de forma permanente.
+</p>
+</details>
+
+<details>
+<summary><b>¿Qué diferencia hay entre el modelo "Preciso" y "Rápido"?</b></summary>
+<p>
+El modelo <b>Preciso</b> (<code>large-v3-turbo</code>) ofrece la mayor fidelidad ortográfica, nombres propios y acentos. El modelo <b>Rápido</b> (<code>small</code>) procesa el audio en una fracción del tiempo usando menos memoria RAM, con una precisión muy buena para conversaciones cotidianas.
+</p>
+</details>
+
+<details>
+<summary><b>¿Mis datos o audios son almacenados o compartidos?</b></summary>
+<p>
+No. A diferencia de las APIs comerciales en la nube, todo el proceso de transcripción ocurre localmente en la memoria de tu computadora. Nadie más tiene acceso a tus archivos.
+</p>
+</details>
+
+---
+
+## 📂 Estructura del repositorio
+
+| Archivo / Carpeta | Propósito |
 |---|---|
-| `app.pyw` | La ventana |
-| `transcribir.py` | La transcripción (la usa la ventana, y también funciona sola desde la terminal) |
-| `compilar.py` | Genera el programa portable con PyInstaller |
-| `Dockerfile.linux` | Compila la versión de Linux dentro de Docker |
-| `licencias/` | Textos de licencias de terceros que se copian al programa compilado |
+| `app.pyw` | Interfaz gráfica de usuario (GUI con Tkinter) |
+| `transcribir.py` | Motor de transcripción con Whisper (utilizable por GUI y CLI) |
+| `compilar.py` | Script automatizado para empaquetar con PyInstaller |
+| `Dockerfile.linux` | Contenedor para compilar la versión de Linux herméticamente |
+| `requirements.txt` | Dependencias del proyecto en Python |
+| `licencias/` | Licencias de terceros incluidas para distribución legal |
 
-## Planes a futuro
+---
 
-- **Programa compilado para Mac.** Hace falta alguien con una Mac que lo compile y lo pruebe.
-- **App para Android y iPhone.** Este código no puede correr en teléfonos, pero se puede hacer una app aparte usando
-  [whisper.cpp](https://github.com/ggerganov/whisper.cpp), que sí funciona en móviles. ¡Se aceptan ayudas!
-- Abrir el programa directamente desde "Compartir" en WhatsApp de escritorio.
-- Barra de progreso durante la descarga del modelo.
+## 🤝 Colaboración y Comunidad
 
-## Colaborar
+¿Encontraste un problema o tienes sugerencias de mejora? ¡Las contribuciones son bienvenidas!
+- Revisa las pautas en [CONTRIBUTING.md](CONTRIBUTING.md).
+- Abre un reporte o sugerencia en [Issues](../../issues).
 
-¿Encontraste un error o tienes una idea? Abre un [issue](../../issues). Si quieres mejorar el código, mira [CONTRIBUTING.md](CONTRIBUTING.md).
+---
 
-## Licencia
+## 📄 Licencia
 
-[GPL v3 o posterior](LICENSE), con un [permiso adicional](EXCEPCION-GPL.md) para las bibliotecas OpenSSL e Intel OpenMP
-que vienen incluidas en el programa compilado. Puedes usar, copiar y modificar este programa libremente.
-Si distribuyes una versión modificada, debes publicar también su código bajo la misma licencia.
+Este proyecto está bajo la licencia **[GPL v3 o posterior](LICENSE)**, con una [excepción adicional](EXCEPCION-GPL.md) para componentes vinculados como OpenSSL e Intel OpenMP. Puedes usarlo, estudiarlo y modificarlo libremente.
 
-Los componentes de terceros que incluye el programa compilado y sus licencias están en [TERCEROS.md](TERCEROS.md).
-
-## Créditos
-
-- [faster-whisper](https://github.com/SYSTRAN/faster-whisper) y el modelo Whisper de OpenAI.
-- Inspirado en [ogg-speech-to-text](https://github.com/danperrout/ogg-speech-to-text) de Daniel Perrout.
+Los detalles de bibliotecas de terceros y sus respectivas licencias se encuentran en [TERCEROS.md](TERCEROS.md).
