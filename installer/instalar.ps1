@@ -91,15 +91,17 @@ pause
 
 Write-Host "Instalacion completada con exito." -ForegroundColor Green
 
-# 6. Mostrar mensaje amigable al usuario
-try {
-    [System.Windows.Forms.MessageBox]::Show(
-        "¡TranscribeNext se ha instalado correctamente en tu computadora!`n`nA partir de ahora puedes abrirlo en cualquier momento desde el acceso directo en tu Escritorio o desde el Menú Inicio.",
-        "TranscribeNext - Instalación Exitosa",
-        [System.Windows.Forms.MessageBoxButtons]::OK,
-        [System.Windows.Forms.MessageBoxIcon]::Information
-    ) | Out-Null
-} catch {}
+# 6. Mostrar mensaje amigable al usuario (si no es modo silencioso)
+if (-not $env:SILENT_INSTALL) {
+    try {
+        [System.Windows.Forms.MessageBox]::Show(
+            "¡TranscribeNext se ha instalado correctamente en tu computadora!`n`nA partir de ahora puedes abrirlo en cualquier momento desde el acceso directo en tu Escritorio o desde el Menú Inicio.",
+            "TranscribeNext - Instalación Exitosa",
+            [System.Windows.Forms.MessageBoxButtons]::OK,
+            [System.Windows.Forms.MessageBoxIcon]::Information
+        ) | Out-Null
+    } catch {}
 
-# 7. Iniciar la aplicacion instalada
-Start-Process -FilePath $targetExe -WorkingDirectory $installDir
+    # 7. Iniciar la aplicacion instalada
+    Start-Process -FilePath $targetExe -WorkingDirectory $installDir
+}
