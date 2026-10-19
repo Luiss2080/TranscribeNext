@@ -62,8 +62,10 @@ def compilar():
 
 def copiar_licencias():
     """Pone en el programa la licencia propia y las de todos los componentes de terceros que lleva."""
-    for nombre in ("LICENSE", "EXCEPCION-GPL.md", "TERCEROS.md"):
-        shutil.copy2(AQUI / nombre, SALIDA / nombre)
+    for nombre in ("LICENSE", "EXCEPCION-GPL.md", "TERCEROS.md", "Instalar-en-Escritorio.bat", "Iniciar-TranscribeNext.bat", "logo.png"):
+        archivo = AQUI / nombre
+        if archivo.exists():
+            shutil.copy2(archivo, SALIDA / nombre)
 
     destino = SALIDA / "licencias"
     shutil.copytree(AQUI / "licencias", destino, dirs_exist_ok=True)  # LGPL (FFmpeg) y OpenSSL 1.1
