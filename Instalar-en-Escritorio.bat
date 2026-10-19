@@ -1,6 +1,6 @@
 @echo off
 chcp 65001 >nul
-title TranscribeNext - Instalador de Acceso Directo
+title TranscribeNext - Instalador en Escritorio
 
 echo ======================================================================
 echo                INSTALADOR DE ACCESO DIRECTO - TRANSCRIBENEXT
@@ -12,34 +12,24 @@ echo.
 set "CARPETA=%~dp0"
 set "CARPETA=%CARPETA:~0,-1%"
 
-:: Buscar si existe el ejecutable compilado o el script de Python
-set "TARGET=%CARPETA%\Transcriptor.exe"
-if not exist "%TARGET%" (
-    set "TARGET=%CARPETA%\app.pyw"
-)
+:: Ejecutar script de PowerShell con política bypass
+powershell -NoProfile -ExecutionPolicy Bypass -File "%CARPETA%\instalar.ps1" >nul 2>&1
 
-set "ICONO=%CARPETA%\icono.ico"
-if not exist "%ICONO%" (
-    set "ICONO=%TARGET%"
+:: Si falló powershell, usar respaldo VBScript
+if not exist "%USERPROFILE%\Desktop\TranscribeNext.lnk" (
+    set "TARGET=%CARPETA%\Transcriptor.exe"
+    if not exist "%CARPETA%\Transcriptor.exe" set "TARGET=%CARPETA%\app.pyw"
+    
+    echo Set oWS = WScript.CreateObject("WScript.Shell") > "%TEMP%\crear_lnk.vbs"
+    echo sDesk = oWS.SpecialFolders("Desktop") >> "%TEMP%\crear_lnk.vbs"
+    echo Set oLink = oWS.CreateShortcut(sDesk ^& "\TranscribeNext.lnk") >> "%TEMP%\crear_lnk.vbs"
+    echo oLink.TargetPath = "%TARGET%" >> "%TEMP%\crear_lnk.vbs"
+    echo oLink.WorkingDirectory = "%CARPETA%" >> "%TEMP%\crear_lnk.vbs"
+    echo oLink.IconLocation = "%CARPETA%\icono.ico,0" >> "%TEMP%\crear_lnk.vbs"
+    echo oLink.Save >> "%TEMP%\crear_lnk.vbs"
+    cscript //nologo "%TEMP%\crear_lnk.vbs" >nul 2>&1
+    del "%TEMP%\crear_lnk.vbs" >nul 2>&1
 )
-
-:: Usar PowerShell para crear los accesos directos de forma 100% nativa y segura
-powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "$ws = New-Object -ComObject WScript.Shell;" ^
-    "$desktop = [Environment]::GetFolderPath('Desktop');" ^
-    "$scDesktop = $ws.CreateShortcut((Join-Path $desktop 'TranscribeNext.lnk'));" ^
-    "$scDesktop.TargetPath = '%TARGET%';" ^
-    "$scDesktop.WorkingDirectory = '%CARPETA%';" ^
-    "$scDesktop.Description = 'TranscribeNext - Transcriptor inteligente de audios con IA local';" ^
-    "$scDesktop.IconLocation = '%ICONO%,0';" ^
-    "$scDesktop.Save();" ^
-    "$programs = [Environment]::GetFolderPath('Programs');" ^
-    "$scProg = $ws.CreateShortcut((Join-Path $programs 'TranscribeNext.lnk'));" ^
-    "$scProg.TargetPath = '%TARGET%';" ^
-    "$scProg.WorkingDirectory = '%CARPETA%';" ^
-    "$scProg.Description = 'TranscribeNext - Transcriptor inteligente de audios con IA local';" ^
-    "$scProg.IconLocation = '%ICONO%,0';" ^
-    "$scProg.Save();"
 
 echo ----------------------------------------------------------------------
 echo  [LISTO] ¡Acceso directo creado correctamente en tu Escritorio!
@@ -48,6 +38,10 @@ echo.
 echo Ya no necesitas buscar en esta carpeta. A partir de ahora puedes abrir
 echo TranscribeNext directamente desde el icono en tu Escritorio o Menú Inicio.
 echo.
+
+set "EJECUTABLE=%CARPETA%\Transcriptor.exe"
+if not exist "%EJECUTABLE%" set "EJECUTABLE=%CARPETA%\Iniciar-TranscribeNext.bat"
+
 echo Presiona cualquier tecla para abrir TranscribeNext ahora mismo...
 pause >nul
-start "" "%TARGET%"
+start "" "%EJECUTABLE%"

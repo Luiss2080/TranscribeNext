@@ -72,25 +72,27 @@ Solo tienes que arrastrar tu archivo y obtendrás el texto transcrito de inmedia
 
 Elige la opción que mejor se adapte a ti:
 
-### 🌟 Opción 1: Descargar versión lista para usar (Recomendada)
-*No necesitas saber de programación ni instalar Python.*
+### 🌟 Opción 1: Para cualquier persona (1 Clic - Sin instalar nada complejo)
+*No necesitas saber de informática, ni instalar Python, ni usar la terminal.*
 
-1. Ve a la sección de **[Últimas Versiones (Releases)](../../releases/latest)**.
-2. Descarga el paquete correspondiente a tu sistema operativo:
+1. Descarga el archivo de tu sistema en **[Últimas Versiones (Releases)](../../releases/latest)**:
 
-| Sistema Operativo | Archivo de descarga | Cómo iniciarlo |
+| Sistema Operativo | Archivo de descarga | ¿Cómo se instala en 1 clic? |
 |---|---|---|
-| **Windows 10 / 11** (64 bits) | `Transcriptor-Windows.zip` | Descomprime el `.zip` y haz doble clic en `Transcriptor.exe` |
-| **Linux** (Ubuntu, Debian, Mint, Fedora) | `Transcriptor-Linux.zip` | Descomprime y ejecuta el archivo `Transcriptor` |
-| **macOS** | *(Próximamente ejecutable)* | Usar la Opción 2 (desde código) |
+| **Windows 10 / 11** (64 bits) | `Transcriptor-Windows.zip` | 1. Descomprime la carpeta.<br>2. Haz doble clic en **`Instalar-en-Escritorio.bat`**.<br>🎉 *¡Listo! Creará un acceso directo en tu Escritorio como cualquier programa normal.* |
+| **Linux** (Ubuntu, Debian, Mint, Fedora) | `Transcriptor-Linux.zip` | Descomprime la carpeta y haz doble clic en `Transcriptor`. |
+| **macOS** | *(Próximamente)* | Ver la Opción 2 (desde código fuente). |
 
 > [!TIP]
-> **¿Aparece el aviso "Windows protegió su PC"?**  
-> Al tratarse de un programa de código abierto sin firma digital comercial, Windows SmartScreen puede mostrar una advertencia azul. Es completamente seguro: haz clic en **"Más información"** y luego en **"Ejecutar de todas formas"**.
+> **¿Aparece la pantalla azul "Windows protegió su PC"?**  
+> Es normal en programas gratuitos y seguros sin firma comercial corporativa de Microsoft:
+> 1. Haz clic en el texto subrayado **"Más información"**.
+> 2. Haz clic en el botón **"Ejecutar de todas formas"**.
+> Solo te lo pedirá la primera vez.
 
 > [!IMPORTANT]
 > **Primera vez que transcribes:**  
-> En la primera transcripción, la aplicación descargará el modelo de inteligencia artificial (~1.6 GB) de forma automática. Tardará unos minutos según la velocidad de tu internet. **A partir de ese momento, funcionará siempre sin conexión a internet.**
+> La primera vez que abras el programa, descargará el modelo de inteligencia artificial (~1.6 GB) de forma 100% automática en tu equipo. Tardará unos minutos según la velocidad de tu internet. **A partir de ese momento, funcionará siempre sin conexión a internet y de forma ilimitada.**
 
 ---
 
@@ -134,15 +136,16 @@ python -m venv .venv
 
 ## 📖 Cómo se usa (Paso a paso)
 
-1. **Abre el programa**: Ejecuta `Transcriptor.exe` o `app.pyw`.
+1. **Abre el programa**: Desde el acceso directo en tu Escritorio o haciendo doble clic en `Iniciar-TranscribeNext.bat`.
 2. **Carga tus audios**:
-   - Haz clic en **"Seleccionar audio..."** o simplemente **arrastra y suelta** los archivos dentro de la ventana.
-3. **Elige tus preferencias**:
-   - **Modelo**: Déjalo en *"Preciso"* para la mejor calidad o cambia a *"Rápido"* si tienes prisa.
-   - **Con tiempos**: Marca esta casilla si deseas ver los minutos y segundos de cada frase.
+   - Verás la pantalla principal de bienvenida. Simplemente **arrastra y suelta tu archivo de audio** encima de la ventana o haz clic en el botón azul **"Seleccionar archivo de audio..."**.
+3. **Elige tus preferencias (opcional)**:
+   - **Modo**: Puedes dejarlo en *"Alta Precisión (Recomendado)"* o cambiar a *"Rápido"* si tu computadora es más modesta.
+   - **Con tiempos**: Marca la casilla si quieres ver los minutos y segundos `[00:15]` de cada frase.
 4. **Obtén tu resultado**:
-   - Observa la transcripción en tiempo real.
-   - Cuando termine y muestre el estado **"Listo"**, presiona **"Copiar todo"** o **"Guardar .txt..."**.
+   - Verás la transcripción generándose palabra por palabra con una barra de progreso real y el contador de palabras.
+   - Al terminar, haz clic en **"📋 Copiar texto"** para pegarlo donde quieras (WhatsApp, Word, correo) o en **"💾 Guardar .txt"**.
+   - Para transcribir un nuevo archivo, presiona **"🔄 Transcribir otro audio"**.
 
 ---
 

@@ -62,7 +62,7 @@ def compilar():
 
 def copiar_licencias():
     """Pone en el programa la licencia propia y las de todos los componentes de terceros que lleva."""
-    for nombre in ("LICENSE", "EXCEPCION-GPL.md", "TERCEROS.md", "Instalar-en-Escritorio.bat", "Iniciar-TranscribeNext.bat", "logo.png"):
+    for nombre in ("LICENSE", "EXCEPCION-GPL.md", "TERCEROS.md", "Instalar-en-Escritorio.bat", "Iniciar-TranscribeNext.bat", "instalar.ps1", "logo.png"):
         archivo = AQUI / nombre
         if archivo.exists():
             shutil.copy2(archivo, SALIDA / nombre)
