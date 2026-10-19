@@ -79,7 +79,7 @@ Elige la opción que mejor se adapte a ti:
 
 | Sistema Operativo | Archivo de descarga | ¿Cómo se instala en 1 clic? |
 |---|---|---|
-| **Windows 10 / 11** (64 bits) | `Transcriptor-Windows.zip` | 1. Descomprime la carpeta.<br>2. Haz doble clic en **`Instalar-en-Escritorio.bat`**.<br>🎉 *¡Listo! Creará un acceso directo en tu Escritorio como cualquier programa normal.* |
+| **Windows 10 / 11** (64 bits) | `Transcriptor-Windows.zip` | 1. Descomprime la carpeta.<br>2. Haz doble clic en **`Instalar.bat`**.<br>🎉 *¡Listo! Instalará el programa en tu computadora y creará el acceso directo en tu Escritorio y Menú Inicio.* |
 | **Linux** (Ubuntu, Debian, Mint, Fedora) | `Transcriptor-Linux.zip` | Descomprime la carpeta y haz doble clic en `Transcriptor`. |
 | **macOS** | *(Próximamente)* | Ver la Opción 2 (desde código fuente). |
 
