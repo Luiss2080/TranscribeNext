@@ -239,25 +239,28 @@ No. A diferencia de las APIs comerciales en la nube, todo el proceso de transcri
 
 | Archivo / Carpeta | Propósito |
 |---|---|
-| `app.pyw` | Interfaz gráfica de usuario (GUI con Tkinter) |
+| `Instalar.bat` | **Instalador en 1 clic para Windows** (Instala en el sistema y crea accesos directos) |
+| `Desinstalar.bat` | Desinstalador limpio para Windows |
+| `app.pyw` | Interfaz gráfica moderna de usuario (GUI con Tkinter) |
 | `transcribir.py` | Motor de transcripción con Whisper (utilizable por GUI y CLI) |
 | `compilar.py` | Script automatizado para empaquetar con PyInstaller |
-| `Dockerfile.linux` | Contenedor para compilar la versión de Linux herméticamente |
 | `requirements.txt` | Dependencias del proyecto en Python |
-| `licencias/` | Licencias de terceros incluidas para distribución legal |
+| `assets/` | Iconos e imágenes de la aplicación |
+| `installer/` | Scripts de instalación para Windows, Docker para Linux e Inno Setup |
+| `docs/` | Documentación técnica, guías de contribución y licencias legales |
 
 ---
 
 ## 🤝 Colaboración y Comunidad
 
 ¿Encontraste un problema o tienes sugerencias de mejora? ¡Las contribuciones son bienvenidas!
-- Revisa las pautas en [CONTRIBUTING.md](CONTRIBUTING.md).
+- Revisa las pautas en [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md).
 - Abre un reporte o sugerencia en [Issues](../../issues).
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está bajo la licencia **[GPL v3 o posterior](LICENSE)**, con una [excepción adicional](EXCEPCION-GPL.md) para componentes vinculados como OpenSSL e Intel OpenMP. Puedes usarlo, estudiarlo y modificarlo libremente.
+Este proyecto está bajo la licencia **[GPL v3 o posterior](LICENSE)**, con una [excepción adicional](docs/EXCEPCION-GPL.md) para componentes vinculados como OpenSSL e Intel OpenMP. Puedes usarlo, estudiarlo y modificarlo libremente.
 
-Los detalles de bibliotecas de terceros y sus respectivas licencias se encuentran en [TERCEROS.md](TERCEROS.md).
+Los detalles de bibliotecas de terceros y sus respectivas licencias se encuentran en [docs/TERCEROS.md](docs/TERCEROS.md).
